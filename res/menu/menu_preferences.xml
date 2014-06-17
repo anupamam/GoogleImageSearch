@@ -9,5 +9,13 @@
         android:title="Preferences">
 
     </item>
+    
+    <item 
+        android:id="@+id/action_search"
+          android:orderInCategory="5"
+          android:title="Search Image"
+          android:icon="@drawable/ic_searcher"
+          android:showAsAction="ifRoom|collapseActionView"
+          android:actionViewClass="android.widget.SearchView" />
 
 </menu>

@@ -30,20 +30,21 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
         public static final int ic_menu=0x7f020001;
         public static final int ic_search=0x7f020002;
-        public static final int ic_settings=0x7f020003;
-        public static final int ic_xoom=0x7f020004;
+        public static final int ic_searcher=0x7f020003;
+        public static final int ic_settings=0x7f020004;
+        public static final int ic_xoom=0x7f020005;
     }
     public static final class id {
+        public static final int action_search=0x7f090011;
         public static final int btSave=0x7f09000b;
         public static final int btnSearch=0x7f09000d;
         public static final int container=0x7f090000;
-        public static final int etQuery=0x7f09000c;
         public static final int etSiteFilter=0x7f090007;
-        public static final int frameLayout1=0x7f09000e;
-        public static final int gvImages=0x7f09000f;
+        public static final int gvImages=0x7f09000c;
         public static final int ivResult=0x7f090001;
-        public static final int lyFragment=0x7f090010;
-        public static final int miPreferences=0x7f090011;
+        public static final int layout_image=0x7f09000f;
+        public static final int lyFragment=0x7f09000e;
+        public static final int miPreferences=0x7f090010;
         public static final int spnColor=0x7f090009;
         public static final int spnSize=0x7f090008;
         public static final int spnType=0x7f09000a;
@@ -62,6 +63,7 @@ public final class R {
         public static final int fragment_=0x7f030005;
         public static final int fragment_user_preferences=0x7f030006;
         public static final int item_image_result=0x7f030007;
+        public static final int smart_image_fragment=0x7f030008;
     }
     public static final class menu {
         public static final int menu_preferences=0x7f080000;

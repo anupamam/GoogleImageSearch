@@ -5,26 +5,6 @@
     tools:context="${packageName}.${activityClass}" >
 
     
-        <EditText
-            android:id="@+id/etQuery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:ems="10"
-            android:inputType="textMultiLine"
-            android:hint="@string/query_hint" />
-		<Button
-	        android:id="@+id/btnSearch"
-	        android:layout_width="20dp"
-	       android:layout_height="wrap_content"
-	        android:layout_alignParentRight="true"
-	        android:layout_toRightOf="@+id/etQuery"
-	        android:layout_below="@+id/frameLayout1"
-	        android:onClick="onImageSearch"
-	        android:background="@drawable/ic_xoom"
-	       />
-
 		<GridView
 		    android:id="@+id/gvImages"
 		    android:layout_width="match_parent"

@@ -5,15 +5,13 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -22,10 +20,11 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.android.apps.googleimagesearch.UserPreferencesFragment.EditNameDialogListener;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
-public class SearchActivity extends Activity {
+public class SearchActivity  extends FragmentActivity implements EditNameDialogListener {
 	EditText etQuery;
 	GridView gvImages; 
 	Button btnSearch;
@@ -42,9 +41,7 @@ public class SearchActivity extends Activity {
 	
 	private static final String USER_PREFERENCE = "user_preference";
 
-	
-
-	
+		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -85,6 +82,8 @@ public class SearchActivity extends Activity {
 		gvImages=(GridView)findViewById(R.id.gvImages);
 		btnSearch=(Button)findViewById(R.id.btnSearch);
 	}
+	
+	
 	
 	public void onImageSearch(View v){
 		imageAdapter.clear();
@@ -135,13 +134,19 @@ public class SearchActivity extends Activity {
 	
 	
 	public void onPreferences(MenuItem mi){
-		//Toast.makeText(this, "Preferences!", Toast.LENGTH_SHORT).show();
-		Intent intent = new Intent(this, PreferencesActivity.class);
-		//get User Preferences
 		
-		startActivityForResult(intent, requestCode);
-		
+		//Intent intent = new Intent(this, PreferencesActivity.class);
+		//startActivityForResult(intent, requestCode);
+		//call overlay for settings
+		showEditDialog();
 	}
+	
+	private void showEditDialog() {
+	      FragmentManager fm = getSupportFragmentManager();
+	      UserPreferencesFragment editNameDialog = UserPreferencesFragment.newInstance("Filter");
+	      editNameDialog.show(fm, "fragment_edit_name");
+	  }
+	
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -160,6 +165,18 @@ public class SearchActivity extends Activity {
 		
 		
 		
+	}
+
+	@Override
+	public void onFinishEditDialog(UserPreference userPref) {
+		if(userPref !=null){
+			imgtype = userPref.getType();
+			as_sitesearch = userPref.getSiteFilter();
+			imgcolor = userPref.getColorFilter();
+			imgsz = userPref.getSize();
+			Toast.makeText(getApplicationContext(), imgsz +":" +imgcolor + ":", Toast.LENGTH_LONG).show();
+		}
+		Toast.makeText(this, "Hi, " + userPref.getSize(), Toast.LENGTH_SHORT).show();
 	}
 
 }

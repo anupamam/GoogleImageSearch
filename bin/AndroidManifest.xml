@@ -28,12 +28,18 @@
             android:name="com.android.apps.googleimagesearch.ImageDisplayActivity"
             android:label="@string/title_activity_image_display" >
         </activity>
-
         <activity
             android:name="com.android.apps.googleimagesearch.PreferencesActivity"
             android:label="@string/title_activity_preferences" >
         </activity>
-
+        <activity
+            android:name="com.android.apps.googleimagesearch.FragmentActivity"
+            android:label="@string/title_activity_fragment" >
+        </activity>
+        <activity
+            android:name="com.android.apps.googleimagesearch.FragmentDialogActivity"
+            android:label="@string/title_activity_fragment_dialog" >
+        </activity>
     </application>
 
 </manifest>

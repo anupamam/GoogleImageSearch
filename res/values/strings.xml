@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     <string name="app_name">ImageSearch</string>
     <string name="hello_world">Hello world!</string>
     <string name="query_hint">Enter Search Term</string>
@@ -16,9 +15,9 @@
     <string name="size_prompt">Choose Image Size</string>
     <string name="color_prompt">Choose Image Color</string>
     <string name="type_prompt">Choose Image Type</string>
-    
-     <string-array name="icon_size_array">
-        <item>default</item>
+
+    <string-array name="icon_size_array">
+        <item>""</item>
         <item>icon</item>
         <item>small</item>
         <item>medium</item>
@@ -26,18 +25,16 @@
         <item>xlarge</item>
         <item>xxlarge</item>
         <item>huge</item>
-      </string-array>
-      
-     <string-array name="image_type_array">
-        <item>default</item>
+    </string-array>
+    <string-array name="image_type_array">
+        <item>""</item>
         <item>face</item>
         <item>photo</item>
         <item>clipart</item>
         <item>lineart</item>
-      </string-array>
-      
-     <string-array name="image_color_array">
-        <item>default</item>
+    </string-array>
+    <string-array name="image_color_array">
+        <item>""</item>
         <item>black</item>
         <item>blue</item>
         <item>brown</item>
@@ -50,7 +47,10 @@
         <item>teal</item>
         <item>white</item>
         <item>yellow</item>
-      </string-array>
+    </string-array>
 
+    <string name="title_activity_fragment">FragmentActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_fragment_dialog">FragmentDialogActivity</string>
 
 </resources>

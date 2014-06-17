@@ -174,9 +174,8 @@ public class SearchActivity  extends FragmentActivity implements EditNameDialogL
 			as_sitesearch = userPref.getSiteFilter();
 			imgcolor = userPref.getColorFilter();
 			imgsz = userPref.getSize();
-			Toast.makeText(getApplicationContext(), imgsz +":" +imgcolor + ":", Toast.LENGTH_LONG).show();
 		}
-		Toast.makeText(this, "Hi, " + userPref.getSize(), Toast.LENGTH_SHORT).show();
+		
 	}
 
 }

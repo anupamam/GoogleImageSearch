@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
-<<<<<<< HEAD
+
         android:id="@+id/miPreferences"
         android:icon="@drawable/ic_menu"
          android:onClick="onPreferences"
         android:showAsAction="ifRoom"
         android:title="Preferences">
-=======
-        android:id="@+id/miSettings"
-        android:icon="@drawable/ic_settings"
-         android:onClick="onPreferences"
-        android:showAsAction="ifRoom"
-        android:title="Settings">
->>>>>>> 3e3baec031574fd583dfc4f3718e678e0f46dcfc
+
     </item>
 
 </menu>

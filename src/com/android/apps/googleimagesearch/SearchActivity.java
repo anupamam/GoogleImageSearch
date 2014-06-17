@@ -4,13 +4,20 @@ import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+<<<<<<< HEAD
+=======
+import org.lucasr.smoothie.ItemManager;
+>>>>>>> 3e3baec031574fd583dfc4f3718e678e0f46dcfc
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.view.Menu;
 import android.view.MenuItem;
+=======
+>>>>>>> 3e3baec031574fd583dfc4f3718e678e0f46dcfc
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -19,7 +26,10 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3e3baec031574fd583dfc4f3718e678e0f46dcfc
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
@@ -27,6 +37,7 @@ public class SearchActivity extends Activity {
 	EditText etQuery;
 	GridView gvImages; 
 	Button btnSearch;
+<<<<<<< HEAD
 	int requestCode = 200;
 	ArrayList<ImageResult> imageResults;
 	ImageResultArrayAdapter imageAdapter;
@@ -38,6 +49,10 @@ public class SearchActivity extends Activity {
 	String imgsz="";
 	
 	private static final String USER_PREFERENCE = "user_preference";
+=======
+	ArrayList<ImageResult> imageResults;
+	ImageResultArrayAdapter imageAdapter;
+>>>>>>> 3e3baec031574fd583dfc4f3718e678e0f46dcfc
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +106,7 @@ public class SearchActivity extends Activity {
 		String query = etQuery.getText().toString();
 		AsyncHttpClient client = new AsyncHttpClient();
 		
+<<<<<<< HEAD
 		StringBuilder url =  new StringBuilder();
 		url.append("https://ajax.googleapis.com/ajax/services/search/images?rsz=8&start=" + (page*8) + "&v=1.0&q=" + Uri.encode(query));
 		if(imgtype.length()>0)
@@ -105,6 +121,10 @@ public class SearchActivity extends Activity {
 		//Toast.makeText(getApplicationContext(), url, Toast.LENGTH_LONG).show();
 		
 		client.get(url.toString(),new JsonHttpResponseHandler(){
+=======
+		client.get("https://ajax.googleapis.com/ajax/services/search/images?rsz=8&"+ "start="+ (page*8) +"&v=1.0&q=" + Uri.encode(query), 
+				new JsonHttpResponseHandler(){
+>>>>>>> 3e3baec031574fd583dfc4f3718e678e0f46dcfc
 			@Override
 			public void onSuccess(JSONObject response){
 				JSONArray imageJSONResults = null;
@@ -119,6 +139,7 @@ public class SearchActivity extends Activity {
 			
 		});
 	}
+<<<<<<< HEAD
 	
 	@Override
 	 public boolean onCreateOptionsMenu(Menu menu) {
@@ -155,4 +176,6 @@ public class SearchActivity extends Activity {
 		
 		
 	}
+=======
+>>>>>>> 3e3baec031574fd583dfc4f3718e678e0f46dcfc
 }

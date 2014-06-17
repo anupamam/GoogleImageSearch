@@ -28,10 +28,13 @@
             android:name="com.android.apps.googleimagesearch.ImageDisplayActivity"
             android:label="@string/title_activity_image_display" >
         </activity>
+<<<<<<< HEAD
         <activity
             android:name="com.android.apps.googleimagesearch.PreferencesActivity"
             android:label="@string/title_activity_preferences" >
         </activity>
+=======
+>>>>>>> 3e3baec031574fd583dfc4f3718e678e0f46dcfc
     </application>
 
 </manifest>

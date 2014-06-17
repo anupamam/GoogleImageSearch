@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+<<<<<<< HEAD
     <string name="app_name">ImageSearch</string>
     <string name="hello_world">Hello world!</string>
     <string name="query_hint">Enter Search Term</string>
@@ -50,5 +51,11 @@
         <item>white</item>
         <item>yellow</item>
       </string-array>
+=======
+    <string name="app_name">GoogleImageSearch</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="query_hint">Enter Search Term</string>
+    <string name="title_activity_image_display">ImageDisplayActivity</string>
+>>>>>>> 3e3baec031574fd583dfc4f3718e678e0f46dcfc
 
 </resources>

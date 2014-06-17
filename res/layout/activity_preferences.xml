@@ -1,0 +1,124 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context="${packageName}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/txtOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:textColor="@android:color/white"
+        android:text="@string/search_options" />
+
+    <TextView
+        android:id="@+id/txtSize"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txtOptions"
+        android:layout_marginTop="30dp"
+        android:textColor="@android:color/white"
+        android:text="@string/image_size" />
+
+    <TextView
+        android:id="@+id/txtFilter"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/txtSize"
+        android:layout_below="@+id/txtSize"
+        android:layout_marginTop="30dp"
+         android:textColor="@android:color/white"
+        android:text="@string/color_filter" />
+
+    <TextView
+        android:id="@+id/txtType"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+         android:textColor="@android:color/white"
+        android:layout_below="@+id/txtFilter"
+        android:layout_marginTop="30dp"
+        android:text="@string/image_type" />
+
+    <TextView
+        android:id="@+id/txtSite"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/txtType"
+        android:layout_below="@+id/txtType"
+        android:layout_marginTop="30dp"
+         android:textColor="@android:color/white"
+        android:text="@string/site_filter" />
+
+    <EditText
+        android:id="@+id/etSiteFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtSite"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+         android:textColor="@android:color/white"
+        android:inputType="textMultiLine" >
+
+        <requestFocus />
+    </EditText>
+   
+    <Spinner
+        android:id="@+id/spnSize"
+         android:background="@android:color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtSize"
+        android:layout_alignLeft="@+id/etSiteFilter"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txtOptions"
+        android:popupBackground="@android:color/white"
+        android:entries="@array/icon_size_array"
+        android:prompt="@string/size_prompt" />
+
+    <Spinner
+        android:id="@+id/spnColor"
+        android:background="@android:color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtFilter"
+        android:layout_alignLeft="@+id/spnSize"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/spnSize"
+        android:entries="@array/image_color_array"
+        android:popupBackground="@android:color/white"
+        android:prompt="@string/color_prompt" />
+    
+    <Spinner
+        android:id="@+id/spnType"
+         android:background="@android:color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtType"
+        android:layout_alignLeft="@+id/spnColor"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/spnColor"
+        android:entries="@array/image_type_array"
+        android:popupBackground="@android:color/white"
+        android:prompt="@string/type_prompt" />
+    
+     <Button
+        android:id="@+id/btSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etSiteFilter"
+        android:layout_below="@+id/etSiteFilter"
+        android:layout_marginTop="44dp"
+        android:onClick="onSave"
+        android:text="@string/save" />
+
+     
+    
+</RelativeLayout>

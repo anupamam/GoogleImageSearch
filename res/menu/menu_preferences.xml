@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item
-
-        android:id="@+id/miPreferences"
-        android:icon="@drawable/ic_menu"
-         android:onClick="onPreferences"
-        android:showAsAction="ifRoom"
-        android:title="Preferences">
-
-    </item>
-    
-    <item 
+     <item 
         android:id="@+id/action_search"
           android:orderInCategory="5"
           android:title="Search Image"
           android:icon="@drawable/ic_searcher"
           android:showAsAction="ifRoom|collapseActionView"
           android:actionViewClass="android.widget.SearchView" />
+    <item
+        android:id="@+id/miPreferences"
+        android:icon="@drawable/ic_menu"
+         android:onClick="onPreferences"
+        android:showAsAction="ifRoom"
+        android:title="Preferences">
+    </item>
+     <item
+        android:id="@+id/menu_item_share"
+        android:showAsAction="ifRoom"
+        android:title="Share"
+        android:actionProviderClass="android.widget.ShareActionProvider" />
 
 </menu>

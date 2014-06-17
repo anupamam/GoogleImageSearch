@@ -35,7 +35,7 @@ public final class R {
         public static final int ic_xoom=0x7f020005;
     }
     public static final class id {
-        public static final int action_search=0x7f090011;
+        public static final int action_search=0x7f090010;
         public static final int btSave=0x7f09000b;
         public static final int btnSearch=0x7f09000d;
         public static final int container=0x7f090000;
@@ -44,7 +44,8 @@ public final class R {
         public static final int ivResult=0x7f090001;
         public static final int layout_image=0x7f09000f;
         public static final int lyFragment=0x7f09000e;
-        public static final int miPreferences=0x7f090010;
+        public static final int menu_item_share=0x7f090012;
+        public static final int miPreferences=0x7f090011;
         public static final int spnColor=0x7f090009;
         public static final int spnSize=0x7f090008;
         public static final int spnType=0x7f09000a;

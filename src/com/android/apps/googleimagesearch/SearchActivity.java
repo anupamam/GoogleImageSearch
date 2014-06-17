@@ -1,5 +1,8 @@
 package com.android.apps.googleimagesearch;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -7,8 +10,13 @@ import org.json.JSONObject;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
@@ -18,11 +26,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.Toast;
 import android.widget.SearchView.OnQueryTextListener;
+import android.widget.ShareActionProvider;
 
 import com.android.apps.googleimagesearch.UserPreferencesFragment.EditNameDialogListener;
 import com.loopj.android.http.AsyncHttpClient;
@@ -37,12 +49,14 @@ public class SearchActivity  extends FragmentActivity implements EditNameDialogL
 	String query="";
 	ArrayList<ImageResult> imageResults;
 	ImageResultArrayAdapter imageAdapter;
+	SmartImageView imageView;
 	//user preferences
 	UserPreference userPref;
 	String imgtype="";
 	String as_sitesearch="";
 	String imgcolor="";
 	String imgsz="";
+	ShareActionProvider miShareAction;
 	
 	private static final String USER_PREFERENCE = "user_preference";
 
@@ -54,8 +68,7 @@ public class SearchActivity  extends FragmentActivity implements EditNameDialogL
 		setUpViews();
 		imageResults = new ArrayList<ImageResult>();
 		imageAdapter = new ImageResultArrayAdapter(this, imageResults);
-		imageAdapter.clear();
-		imageResults.clear();
+		
 		gvImages.setAdapter(imageAdapter);
 		gvImages.setOnItemClickListener(new OnItemClickListener() {
 
@@ -64,10 +77,13 @@ public class SearchActivity  extends FragmentActivity implements EditNameDialogL
 					int position, long id) {
 				ImageResult imageResult = imageResults.get(position);
 				showImage(imageResult);
+				
+				setupShareIntent(imageResult);
 			}
 		
 		});
-	
+		
+		
 		gvImages.setOnScrollListener(new EndlessScrollListener() {
 			
 			@Override
@@ -75,21 +91,27 @@ public class SearchActivity  extends FragmentActivity implements EditNameDialogL
 				getImages(page);
 			}
 		});
+		
+		
 	}
 	
 	private void setUpViews(){
-		//etQuery=(EditText)findViewById(R.id.etQuery);
 		gvImages=(GridView)findViewById(R.id.gvImages);
-		//btnSearch=(Button)findViewById(R.id.btnSearch);
 	}
 	
-	
-	
-	public void onImageSearch(View v){
-		imageAdapter.clear();
-		getImages(0);
+	public void setupShareIntent(ImageResult result) {
+	    // Fetch Bitmap Uri locally
+		String url = result.getFullUrl();
+	    	Intent shareIntent = new Intent();
+	    shareIntent.setAction(Intent.ACTION_SEND);
+	    shareIntent.putExtra(Intent.EXTRA_TEXT, url);
+	    shareIntent.setType("text/plain");
+	    startActivity(Intent.createChooser(shareIntent,"Share using"));
+	    // Attach share event to the menu item provider
+	    
 	}
 	
+		
 	public void getImages(int page){
 		AsyncHttpClient client = new AsyncHttpClient();
 		StringBuilder url =  new StringBuilder();
@@ -125,6 +147,10 @@ public class SearchActivity  extends FragmentActivity implements EditNameDialogL
        getMenuInflater().inflate(R.menu.menu_preferences, menu);
        MenuItem searchItem = menu.findItem(R.id.action_search);
        SearchView searchView = (SearchView)searchItem.getActionView();
+       
+       MenuItem item = menu.findItem(R.id.menu_item_share);
+        miShareAction = (ShareActionProvider) item.getActionProvider();
+       
        searchView.setOnQueryTextListener(new OnQueryTextListener() {
            @Override
            public boolean onQueryTextSubmit(String searchQuery) {
@@ -155,27 +181,6 @@ public class SearchActivity  extends FragmentActivity implements EditNameDialogL
 	      editNameDialog.show(fm, "fragment_edit_name");
 	  }
 	
-	private void showImage(ImageResult imageResult){
-		 AlertDialog.Builder imageDialog = new AlertDialog.Builder(this);
-		 LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
-		 View layout = inflater.inflate(R.layout.smart_image_fragment,(ViewGroup) findViewById(R.id.layout_image));
-		 SmartImageView imageView = (SmartImageView) layout.findViewById(R.id.ivResult);
-		 imageView.setImageUrl(imageResult.getFullUrl());
-		 imageDialog.setView(layout);
-	     imageDialog.setCancelable(true);
-	     imageDialog.setPositiveButton("OK", new DialogInterface.OnClickListener(){
-	            public void onClick(DialogInterface dialog, int which) {
-	                dialog.dismiss();
-	            }
-
-	        });
-
-	    
-	     imageDialog.create();
-	     imageDialog.show();
-	}
-	
-
 	@Override
 	public void onFinishEditDialog(UserPreference userPref) {
 		if(userPref !=null){
@@ -186,6 +191,28 @@ public class SearchActivity  extends FragmentActivity implements EditNameDialogL
 		}
 		
 	}
+	
+	private void showImage(ImageResult imageResult){
+		 AlertDialog.Builder imageDialog = new AlertDialog.Builder(this);
+		 LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+		 View layout = inflater.inflate(R.layout.smart_image_fragment,(ViewGroup) findViewById(R.id.layout_image));
+		 imageView = (SmartImageView) layout.findViewById(R.id.ivResult);
+		 imageView.setImageUrl(imageResult.getFullUrl());
+		 imageView.setImageDrawable(imageView.getDrawable());
+		 imageDialog.setView(layout);
+	     imageDialog.setCancelable(true);
+	     imageDialog.setPositiveButton("ok", new DialogInterface.OnClickListener(){
+	            public void onClick(DialogInterface dialog, int which) {
+	            	dialog.dismiss();
+	            }
+
+	        });
+	     imageDialog.create();
+	     imageDialog.show();
+	}
+	
+
+	
 
 
 }
